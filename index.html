@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+
+
+
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-image="img/puffin.jpg" data-transition="fade-out">
+					<h2 style="text-transform: none; color:#002b36;">A REST API in 5 minutes with Preside</h2>
+				</section>
+
+				<section></section>
+
+				<section>
+					<h2>Quick Start</h2>
+				</section>
+
+				<section>
+					TODO: Brief overview of the demo site
+				</section>
+
+				<section>
+					<video data-src="video/install.mov" data-autoplay="true" />
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code data-trim data-noescape data-line-numbers>
+/**
+ * @dataManagerEnabled  true
+ */
+
+component {
+  property name="name" type="string" dbtype="varchar";
+  property ...
+}
+&nbsp;</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code data-trim data-noescape data-line-numbers="3">
+/**
+ * @dataManagerEnabled  true
+ * @dataApiEnabled      true
+ */
+
+component {
+  property name="name" type="string" dbtype="varchar";
+  property ...
+}</code></pre>
+				</section>
+
+				<section>
+					<video data-src="video/user-config.mov" data-autoplay="true" />
+				</section>
+
+				<section>
+					<h2>Auto-generated docs</h2>
+					<p><u>http://my.site/api/data/v1/docs/html/</u></p>
+				</section>
+
+				<section>
+					<img data-src="img/docs-basic-1.png" />
+				</section>
+				<section>
+					<img data-src="img/docs-basic-2.png" />
+				</section>
+				<section>
+					<img data-src="img/docs-basic-3.png" />
+				</section>
+				<section>
+					<img data-src="img/docs-basic-4.png" />
+				</section>
+				<section>
+					<img data-src="img/docs-basic-5.png" />
+				</section>
+				<section>
+					<img data-src="img/docs-basic-6.png" />
+				</section>
+				<section>
+					<img data-src="img/docs-basic-7.png" />
+				</section>
+
+				<section>
+blah
+				</section>
+			</div>
+		</div>
+
+
+
+
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				],
+				transition: "none"
+			});
+		</script>
+	</body>
+</html>
