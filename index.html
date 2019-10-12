@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="css/theme/moon.css">
 
 		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+		<link rel="stylesheet" href="lib/css/atom.css">
 
 		<!-- Printing and PDF exports -->
 		<script>
@@ -43,25 +43,25 @@
 				</section>
 
 				<section>
-					<video data-src="video/install.mov" data-autoplay="true" />
+					<video data-src="video/install.mov" />
 				</section>
 
 				<section>
 					<em>/preside-objects/dog.cfc</em>
-					<pre><code data-trim data-noescape data-line-numbers>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
 /**
  * @dataManagerEnabled  true
  */
 
+
 component {
   property name="name" type="string" dbtype="varchar";
   property ...
-}
-&nbsp;</code></pre>
+}</code></pre>
 				</section>
 				<section>
 					<em>/preside-objects/dog.cfc</em>
-					<pre><code data-trim data-noescape data-line-numbers="3">
+					<pre><code class="java" data-trim data-noescape data-line-numbers="3">
 /**
  * @dataManagerEnabled  true
  * @dataApiEnabled      true
@@ -74,12 +74,19 @@ component {
 				</section>
 
 				<section>
-					<video data-src="video/user-config.mov" data-autoplay="true" />
+					<video data-src="video/user-config-1.mov" />
+				</section>
+				<section>
+					<video data-src="video/user-config-2.mov" />
 				</section>
 
 				<section>
 					<h2>Auto-generated docs</h2>
 					<p><u>/api/data/v1/docs/html/</u></p>
+
+					<aside class="notes">
+						Open API (Swagger) spec
+					</aside>
 				</section>
 
 				<section>
@@ -108,38 +115,192 @@ component {
 					<p>GET <u>/entity/dog/</u></p>
 				</section>
 				<section>
-					<video data-src="video/i-dog-listing-auth.mov" data-autoplay="true" />
+					<video data-src="video/i-dog-listing-auth.mov" />
 				</section>
 				<section>
-					<video data-src="video/i-dog-fields.mov" data-autoplay="true" />
+					<video data-src="video/i-dog-fields.mov" />
 				</section>
 				<section>
-					<video data-src="video/i-dog-filter.mov" data-autoplay="true" />
+					<video data-src="video/i-dog-filter.mov" />
 				</section>
 				<section>
-					<video data-src="video/i-dog-pagesize.mov" data-autoplay="true" />
+					<video data-src="video/i-dog-pagesize.mov" />
 				</section>
 
 				<section>
 					<p>GET <u>/entity/dog/{recordId}/</u></p>
 				</section>
 				<section>
-					<video data-src="video/i-dog-jethro.mov" data-autoplay="true" />
+					<video data-src="video/i-dog-jethro.mov" />
 				</section>
 
 				<section>
 					<p>PUT <u>/entity/dog/{recordId}/</u></p>
 				</section>
 				<section>
-					<video data-src="video/i-dog-jethro-put.mov" data-autoplay="true" />
+					<video data-src="video/i-dog-jethro-put.mov" />
 				</section>
 
 				<section>
-					<h2>Further reading</h2>
+					<h2>SIMPLE CUSTOMISATION</h2>
+				</section>
+
+				<section>
+					<em>/base/api_entity.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+/**
+ * @dataApiEnabled             true
+ * @dataApiExcludeFields       _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts
+ * @dataApiUpsertExcludeFields _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts,datemodified,datecreated
+ */
+
+component {}</code></pre>
 				</section>
 				<section>
+					<em>/base/api_entity.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="2">
+/**
+ * @dataApiEnabled             true
+ * @dataApiExcludeFields       _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts
+ * @dataApiUpsertExcludeFields _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts,datemodified,datecreated
+ */
+
+component {}</code></pre>
+				</section>
+				<section>
+					<em>/base/api_entity.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="3-4">
+/**
+ * @dataApiEnabled             true
+ * @dataApiExcludeFields       _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts
+ * @dataApiUpsertExcludeFields _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts,datemodified,datecreated
+ */
+
+component {}</code></pre>
+				</section>
+				<section>
+					<em>/base/api_entity.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="5-6">
+/**
+ * @dataApiEnabled             true
+ * @dataApiExcludeFields       _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts
+ * @dataApiUpsertExcludeFields _version_is_draft, <span style="opacity:0.3;">&crarr;</span>
+       _version_has_drafts,datemodified,datecreated
+ */
+
+component {}</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+/**
+ * @dataManagerEnabled  true
+ * @dataApiEnabled      true
+ */
+
+
+component {
+  property name="name" type="string" dbtype="varchar";
+  property ...
+}</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+/**
+ * @dataManagerEnabled  true
+ */
+
+
+
+component {
+  property name="name" type="string" dbtype="varchar";
+  property ...
+}</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="7">
+/**
+ * @dataManagerEnabled  true
+ */
+
+
+
+component extends="app.base.api_entity" {
+  property name="name" type="string" dbtype="varchar";
+  property ...
+}</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="3">
+/**
+ * @dataManagerEnabled  true
+ * @dataApiEntityName   dogs
+ */
+
+
+component extends="app.base.api_entity" {
+  property name="name" type="string" dbtype="varchar";
+  property ...
+}</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="4">
+/**
+ * @dataManagerEnabled  true
+ * @dataApiEntityName   dogs
+ * @dataApiCategory     core
+ */
+
+component extends="app.base.api_entity" {
+  property name="name" type="string" dbtype="varchar";
+  property ...
+}</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/breed.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+/**
+ * @dataManagerGroup   dogs
+ * @dataApiCategory    lookups
+ * @dataApiEntityName  breeds
+ */
+
+
+component extends="app.base.api_entity" {}</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/breed.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="5">
+/**
+ * @dataManagerGroup   dogs
+ * @dataApiCategory    lookups
+ * @dataApiEntityName  breeds
+ * @dataApiVerbs       GET,POST
+ */
+
+component extends="app.base.api_entity" {}</code></pre>
+				</section>
+
+
+
+
+				<section>
+					<h2>Further reading</h2>
 					<ul>
-						<li>
+						<li class="fragment">
 							Preside Data API extension docs<br>
 							<u>https://github.com/pixl8/preside-ext-data-api</u>
 						</li>
@@ -152,6 +313,18 @@ component {
 							<em>Build APIs You Won't Hate</em><br>
 							Phil Sturgeon<br>
 							<u>https://apisyouwonthate.com/</u>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Contact me</h2>
+					<ul>
+						<li class="fragment">
+							Twitter: <u>@sebduggan</u>
+						</li>
+						<li class="fragment">
+							Slack: <u>https://www.preside.org/slack</u>
 						</li>
 					</ul>
 				</section>
@@ -172,6 +345,8 @@ component {
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true }
 				],
+				autoPlayMedia: true,
+				progress: true,
 				transition: "none"
 			});
 		</script>
