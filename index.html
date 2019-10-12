@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>A REST API in 5 minutes with Preside</title>
 
 		<link rel="stylesheet" href="css/reset.css">
 		<link rel="stylesheet" href="css/reveal.css">
@@ -25,10 +25,9 @@
 	<body>
 
 
-
-
 		<div class="reveal">
 			<div class="slides">
+
 				<section data-background-image="img/puffin.jpg" data-transition="fade-out">
 					<h2 style="text-transform: none; color:#002b36;">A REST API in 5 minutes with Preside</h2>
 				</section>
@@ -80,7 +79,7 @@ component {
 
 				<section>
 					<h2>Auto-generated docs</h2>
-					<p><u>http://my.site/api/data/v1/docs/html/</u></p>
+					<p><u>/api/data/v1/docs/html/</u></p>
 				</section>
 
 				<section>
@@ -106,17 +105,62 @@ component {
 				</section>
 
 				<section>
-blah
+					<p>GET <u>/entity/dog/</u></p>
+				</section>
+				<section>
+					<video data-src="video/i-dog-listing-auth.mov" data-autoplay="true" />
+				</section>
+				<section>
+					<video data-src="video/i-dog-fields.mov" data-autoplay="true" />
+				</section>
+				<section>
+					<video data-src="video/i-dog-filter.mov" data-autoplay="true" />
+				</section>
+				<section>
+					<video data-src="video/i-dog-pagesize.mov" data-autoplay="true" />
+				</section>
+
+				<section>
+					<p>GET <u>/entity/dog/{recordId}/</u></p>
+				</section>
+				<section>
+					<video data-src="video/i-dog-jethro.mov" data-autoplay="true" />
+				</section>
+
+				<section>
+					<p>PUT <u>/entity/dog/{recordId}/</u></p>
+				</section>
+				<section>
+					<video data-src="video/i-dog-jethro-put.mov" data-autoplay="true" />
+				</section>
+
+				<section>
+					<h2>Further reading</h2>
+				</section>
+				<section>
+					<ul>
+						<li>
+							Preside Data API extension docs<br>
+							<u>https://github.com/pixl8/preside-ext-data-api</u>
+						</li>
+						<li class="fragment">
+							<em>REST Assured: A Pragmatic Approach To API Design</em><br>
+							Adam Tuttle (author of Taffy)<br>
+							<u>https://restassuredbook.com/</u>
+						</li>
+						<li class="fragment">
+							<em>Build APIs You Won't Hate</em><br>
+							Phil Sturgeon<br>
+							<u>https://apisyouwonthate.com/</u>
+						</li>
+					</ul>
 				</section>
 			</div>
 		</div>
 
 
 
-
-
 		<script src="js/reveal.js"></script>
-
 		<script>
 			// More info about config & dependencies:
 			// - https://github.com/hakimel/reveal.js#configuration
