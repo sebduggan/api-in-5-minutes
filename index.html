@@ -21,6 +21,15 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+
+		<style>
+			.reveal section img {
+				border: 0;
+			}
+			.space-above {
+				margin-top:1em;
+			}
+		</style>
 	</head>
 	<body>
 
@@ -141,8 +150,52 @@ component {
 					<video data-src="video/i-dog-jethro-put.mov" />
 				</section>
 
+
 				<section>
-					<h2>SIMPLE CUSTOMISATION</h2>
+					<h2>A pragmatic approach to REST</h2>
+				</section>
+
+				<section>
+					<ul>
+						<li>
+							The Preside Data API uses these verbs:
+							<ul>
+								<li class="fragment">GET</li>
+								<li class="fragment">POST</li>
+								<li class="fragment">PUT</li>
+								<li class="fragment">DELETE</li>
+							</ul>
+						</li>
+
+						<li class="fragment space-above">
+							PATCH is <em>not</em> used:
+							<ul>
+								<li class="fragment">all updates use PUT</li>
+								<li class="fragment">only supplied fields are updated</li>
+							</ul>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<p>HATEOAS<small class="fragment" data-fragment-index="1">*</small>? No thank you...</p>
+					<ul>
+						<li class="fragment" data-fragment-index="2">Response body contains <em>only</em> the data</li>
+						<li class="fragment" data-fragment-index="3">Metadata is passed in the headers</li>
+						<li class="fragment" data-fragment-index="4">API is documented separately</li>
+					</ul>
+
+					<small class="fragment" data-fragment-index="1"><br><br><br><br>* <u>H</u>ypertext <u>a</u>s <u>t</u>he <u>E</u>ngine <u>o</u>f <u>A</u>pplication <u>S</u>tate</small>
+
+					<aside class="notes">
+						Hypertext As The Engine Of Application State
+					</aside>
+				</section>
+
+
+
+				<section>
+					<h2>Simple customisation</h2>
 				</section>
 
 				<section>
@@ -294,7 +347,28 @@ component extends="app.base.api_entity" {}</code></pre>
 component extends="app.base.api_entity" {}</code></pre>
 				</section>
 
+				<section>
+					<video data-src="video/docs-customised.mov">
+				</section>
 
+
+				<section>
+					<h2>Customising the Docs</h2>
+				</section>
+
+				<section>
+					<em>/i18n/dataapi.properties</em>
+					<pre><code style="white-space: pre-wrap;" data-trim data-noescape>
+api.title=Rescue Remedies API
+api.description=This API provides REST access to the data for the Rescue Remedies dog rehoming website.
+api.version=v1.0
+api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AAAGVGlUWH...
+					</code></pre>
+				</section>
+
+				<section>
+					<img data-src="img/docs-i18n.png">
+				</section>
 
 
 				<section>
@@ -304,12 +378,12 @@ component extends="app.base.api_entity" {}</code></pre>
 							Preside Data API extension docs<br>
 							<u>https://github.com/pixl8/preside-ext-data-api</u>
 						</li>
-						<li class="fragment">
+						<li class="fragment space-above">
 							<em>REST Assured: A Pragmatic Approach To API Design</em><br>
 							Adam Tuttle (author of Taffy)<br>
 							<u>https://restassuredbook.com/</u>
 						</li>
-						<li class="fragment">
+						<li class="fragment space-above">
 							<em>Build APIs You Won't Hate</em><br>
 							Phil Sturgeon<br>
 							<u>https://apisyouwonthate.com/</u>
@@ -323,7 +397,7 @@ component extends="app.base.api_entity" {}</code></pre>
 						<li class="fragment">
 							Twitter: <u>@sebduggan</u>
 						</li>
-						<li class="fragment">
+						<li class="fragment space-above">
 							Slack: <u>https://www.preside.org/slack</u>
 						</li>
 					</ul>
@@ -345,6 +419,7 @@ component extends="app.base.api_entity" {}</code></pre>
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true }
 				],
+				controls: false,
 				autoPlayMedia: true,
 				progress: true,
 				transition: "none"
