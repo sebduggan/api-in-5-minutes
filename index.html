@@ -44,16 +44,62 @@
 					<h2 style="text-transform: none; color:#002b36;">A REST API in 5 minutes with Preside</h2>
 				</section>
 
-				<section></section>
+
+<!-- ############################################################################################ -->
+
 
 				<section>
-					TODO: Brief introduction to APIs and their use on modern websites/apps
-				</section>
-
-				<section>
+					<p><img data-src="img/ncsa-mosaic.jpg" class="fragment" width="150"></p>
 					<p><img data-src="img/netscape-now.jpg" class="fragment" width="300"></p>
 					<p><img data-src="img/free-ms-ie.gif" class="fragment" width="300"></p>
+
+					<aside class="notes">
+						<ul>
+							<li>Early days of the web: sites were isolated</li>
+							<li>Little server-side processing</li>
+							<li>Browsers not able to access data client-side</li>
+						</ul>
+						<ul>
+							<li>Pull/push data via FTP</li>
+							<li>SOAP - How many used? How many still using?</li>
+							<li>Thankfully, REST came along - simpler, especially when coupled with JSON</li>
+						</ul>
+					</aside>
 				</section>
+
+				<section>
+					<aside class="notes">
+						<ul>
+							<li>Now nearly every site consumes data from the outisde</li>
+							<li>Consumer: Twitter, etc</li>
+							<li>Mobile apps need a simple way to coomunicate data</li>
+							<li>Enterprise: link to external SaaS services, sync CRM data, raise invoices</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					Preside
+
+					<aside class="notes">
+						<ul>
+							<li>Preside is very data-centric</li>
+							<li>Many clients require syncing of data from external systems</li>
+							<li>More and more, required to make data available from Preside</li>
+							<li>Preside has built-in REST capabilities, based on Taffy?</li>
+							<li>Made sense to make the process of setting up an API as easy as possible...</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<p>preside-ext-data-api</p>
+					<img data-src="img/data-api-extension.png">
+				</section>
+
+
+<!-- ############################################################################################ -->
+
 
 				<section>
 					<h2>Quick Start</h2>
@@ -92,6 +138,10 @@ component {
   property name="name" type="string" dbtype="varchar";
   // more properties...
 }</code></pre>
+
+				<aside class="notes">
+					REINIT THE APP, then...
+				</aside>
 				</section>
 
 				<section>
@@ -100,6 +150,10 @@ component {
 				<section>
 					<video data-src="video/user-config-2.mov" />
 				</section>
+
+
+<!-- ############################################################################################ -->
+
 
 				<section>
 					<h2>Auto-generated docs</h2>
@@ -163,6 +217,9 @@ component {
 				</section>
 
 
+<!-- ############################################################################################ -->
+
+
 				<section>
 					<h2>A pragmatic approach to REST</h2>
 				</section>
@@ -204,6 +261,8 @@ component {
 					</aside>
 				</section>
 
+
+<!-- ############################################################################################ -->
 
 
 				<section>
@@ -383,6 +442,9 @@ component extends="app.base.api_entity" {}</code></pre>
 				</section>
 
 
+<!-- ############################################################################################ -->
+
+
 				<section>
 					<h2>Customising properties</h2>
 				</section>
@@ -440,6 +502,10 @@ component {
 }
 &nbsp;
 &nbsp;</code></pre>
+					<aside class="notes">
+						Default behaviours:
+						- assets, links and pages rendered as URLs
+					</aside>
 				</section>
 				<section>
 					<em>/preside-objects/dog.cfc</em>
@@ -515,6 +581,21 @@ component {
 				</section>
 
 
+<!-- ############################################################################################ -->
+
+
+				<section>
+					<h2>Interceptors</h2>
+				</section>
+
+				<section>
+					TODO: Interceptors
+				</section>
+
+
+<!-- ############################################################################################ -->
+
+
 				<section>
 					<h2>Customising the Docs</h2>
 				</section>
@@ -533,14 +614,28 @@ api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AA
 					<img data-src="img/docs-i18n.png">
 				</section>
 
-
 				<section>
-					<h2>Interceptors</h2>
+					<em>/i18n/dataapi.properties</em>
+					<pre><code style="white-space: pre-wrap;" data-trim data-noescape>
+# OBJECT LEVEL
+entity.dogs.name=Dogs
+entity.dogs.name.singular=Dog
+entity.dogs.description=Here are all the dogs...
+entity.dogs.sort.order=10
+
+operation.dogs.get.description=Description for the paginated GET operation for your entity
+
+# FIELD LEVEL
+entity.dogs.field.location.description=ID and label of the location
+					</code></pre>
+
+					<aside class="notes">
+						Note that the entity name is the name you have assigned, if custom.
+					</aside>
 				</section>
 
-				<section>
-					TODO: Interceptors
-				</section>
+
+<!-- ############################################################################################ -->
 
 
 				<section>
@@ -548,13 +643,67 @@ api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AA
 				</section>
 
 				<section>
-					By default, turned off for users
+					<img data-src="img/prefs-changes-off.png">
 
-					Enable change queue per object, per operation
-
-					Page size = default 1
-					Atomic - yes or no.
+					<aside class="notes">
+						<ul>
+							<li>By default, turned off for users</li>
+							<li>Enable change queue per object, per operation</li>
+							<li>Here, just enable all operations, all objects</li>
+						</ul>
+					</aside>
 				</section>
+
+				<section>
+					<img data-src="img/prefs-changes-on.png">
+				</section>
+
+				<section>
+					<video data-src="video/queue-1.mov">
+				</section>
+
+				<section>
+					<video data-src="video/queue-2.mov">
+				</section>
+
+				<section>
+					<em>/config/Config.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+settings.rest.apis[ "/data/v1" ].dataApiQueueEnabled = true;
+settings.rest.apis[ "/data/v1" ].dataApiQueues = {
+    default    = { pageSize=100 , atomicChanges=true  }
+  , highvolume = { pageSize=1000, atomicChanges=false }
+};
+					</code></pre>
+
+					<aside class="notes">
+						By default, queue page size is 1 record.
+
+						Atomic - each individual change is queued in order.
+					</aside>
+				</section>
+
+				<section>
+					<video data-src="video/queue-atomic.mov">
+
+					<aside class="notes">
+						<ul>
+							<li>Page size: Multiple change records</li>
+							<li>Atomic : only the updated fields are shown</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<video data-src="video/queue-atomic-delete.mov">
+
+					<aside class="notes">
+						When the page size GT 0, DELETE method takes an array of QueueIds
+					</aside>
+				</section>
+
+
+<!-- ############################################################################################ -->
 
 
 				<section>
@@ -562,10 +711,39 @@ api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AA
 				</section>
 
 				<section>
-					- None?
-					- OAuth?
-					- Programmatical generation of tokens and self-serve
+					<h3>Basic authentication</h3>
+					<ul>
+						<li class="fragment">Users manually created in admin</li>
+						<li class="fragment space-above">Access token generated</li>
+						<li class="fragment space-above">Potential for self-service for website users
+							<ul>
+								<li class="fragment">Programmatic creation of API user</li>
+								<li class="fragment">Business logic defines permissions</li>
+								<li class="fragment">Show the user their access token</li>
+								<li class="fragment">Allow them to reset their token</li>
+							</ul>
+						</li>
+					</ul>
 				</section>
+
+				<section>
+					<h3>No authentication</h3>
+					<p class="fragment" style="color:#c00;border:4px solid #c00;background:white;padding: .5em 0;margin-bottom:2em;"><strong>WARNING!</strong><br>Only use for a <u>read-only API</u></p>
+
+					<div class="fragment">
+						<em>/config/Config.cfc</em>
+						<pre><code class="java" data-trim data-noescape>
+settings.rest.apis[ "/data/v1" ].authProvider = "";
+						</code></pre>
+					</div>
+
+					<aside class="notes">
+						Could use for a firewall-protected or internal application, but even so should probably use Basic auth!
+					</aside>
+				</section>
+
+
+<!-- ############################################################################################ -->
 
 
 				<section>
@@ -576,6 +754,8 @@ api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AA
 					TODO: Multiple APIs
 				</section>
 
+
+<!-- ############################################################################################ -->
 
 
 				<section>
@@ -616,9 +796,6 @@ api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AA
 
 		<script src="js/reveal.js"></script>
 		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
 			Reveal.initialize({
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
