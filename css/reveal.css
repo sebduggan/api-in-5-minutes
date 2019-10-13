@@ -133,7 +133,7 @@ body {
   visibility: inherit; }
 
 .reveal .slides section .fragment.highlight-red.visible {
-  color: #ff5f01; }
+  color: #f59334; }
 
 .reveal .slides section .fragment.highlight-green.visible {
   color: #17ff2e; }
@@ -142,7 +142,7 @@ body {
   color: #1b91ff; }
 
 .reveal .slides section .fragment.highlight-current-red.current-fragment {
-  color: #ff5f01; }
+  color: #f59334; }
 
 .reveal .slides section .fragment.highlight-current-green.current-fragment {
   color: #17ff2e; }

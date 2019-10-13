@@ -15,22 +15,35 @@
 
 		<!-- Printing and PDF exports -->
 		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
+			var link = document.createElement( "link" );
+			link.rel = "stylesheet";
+			link.type = "text/css";
+			link.href = window.location.search.match( /print-pdf/gi ) ? "css/print/pdf.css" : "css/print/paper.css";
+			document.getElementsByTagName( "head" )[0].appendChild( link );
 		</script>
 
 		<style>
 			.orange {
-				color: #ff5f01;
+				color: #f59334;
 			}
 			.reveal section img {
 				border: 0;
 			}
 			.space-above {
 				margin-top:1em;
+			}
+
+			.blink {
+				animation: blinker 2s linear infinite;
+			}
+
+			@keyframes blinker {
+				15% {
+					opacity: 0;
+				}
+				30% {
+					opacity: 1;
+				}
 			}
 		</style>
 	</head>
@@ -156,7 +169,7 @@ component {
 
 
 				<section>
-					<h2>Auto-generated docs</h2>
+					<h3>Auto-generated docs</h3>
 					<p><u>/api/data/v1/docs/html/</u></p>
 
 					<aside class="notes">
@@ -225,38 +238,28 @@ component {
 				</section>
 
 				<section>
-					<ul>
-						<li>
-							The Preside Data API uses these verbs:
-							<ul>
-								<li class="fragment">GET</li>
-								<li class="fragment">POST</li>
-								<li class="fragment">PUT</li>
-								<li class="fragment">DELETE</li>
+							<p>The Preside Data API uses four verbs:</p>
+							<ul style="text-align:center;list-style:none;margin:0;">
+								<li class="fragment orange" style="display:inline-block;margin:0 1em;">GET</li>
+								<li class="fragment orange" style="display:inline-block;margin:0 1em;">POST</li>
+								<li class="fragment orange" style="display:inline-block;margin:0 1em;">PUT</li>
+								<li class="fragment orange" style="display:inline-block;margin:0 1em;">DELETE</li>
 							</ul>
-						</li>
-
-						<li class="fragment space-above">
-							PATCH is <em>not</em> used:
-							<ul>
-								<li class="fragment">all updates use PUT</li>
-								<li class="fragment">only supplied fields are updated</li>
-							</ul>
-						</li>
-					</ul>
 				</section>
 
 				<section>
-					<p>HATEOAS<small class="fragment" data-fragment-index="1">*</small>? No thank you...</p>
-					<ul>
-						<li class="fragment" data-fragment-index="2">Response body contains <em>only</em> the data</li>
-						<li class="fragment" data-fragment-index="3">Metadata is passed in the headers</li>
-						<li class="fragment" data-fragment-index="4">API is documented separately</li>
-					</ul>
+						<p>PATCH is <em>not</em> used</p>
+						<p class="fragment">All updates use PUT</p>
+						<p class="fragment">Only supplied fields are updated</p>
+				</section>
 
-					<small class="fragment" data-fragment-index="1"><br><br><br><br>* <u>H</u>ypertext <u>a</u>s <u>t</u>he <u>E</u>ngine <u>o</u>f <u>A</u>pplication <u>S</u>tate</small>
+				<section>
+					<p >Response body contains <em>only</em> the data</p>
+					<p class="fragment">Metadata is passed in the headers</p>
+					<p class="fragment">API is documented separately</p>
 
 					<aside class="notes">
+						No to HATEOAS
 						Hypertext As The Engine Of Application State
 					</aside>
 				</section>
@@ -423,7 +426,7 @@ component extends="app.base.api_entity" {}</code></pre>
 				</section>
 
 				<section>
-					<h2>Object annotations</h2>
+					<h3>Object annotations</h3>
 					<ul style="columns:2;list-style:none;margin:0;column-gap:0;">
 						<li class="fragment highlight-current-red">dataApiEntityName</li>
 						<li class="fragment highlight-current-red">dataApiCategory</li>
@@ -568,7 +571,7 @@ component {
 
 
 				<section>
-					<h2>Property annotations</h2>
+					<h3>Property annotations</h3>
 					<ul style="list-style:none;margin:0;">
 						<li class="fragment highlight-current-red">dataApiAlias</li>
 						<li class="fragment highlight-current-red">dataApiRenderer</li>
@@ -589,7 +592,17 @@ component {
 				</section>
 
 				<section>
-					TODO: Interceptors
+					<ul style="list-style:none;margin:0;">
+						<li class="fragment highlight-current-red">onOpenApiSpecGeneration</li>
+						<li class="fragment highlight-current-red">preDataApiSelectData</li>
+						<li class="fragment highlight-current-red">postDataApiSelectData</li>
+						<li class="fragment highlight-current-red">preDataApiInsertData</li>
+						<li class="fragment highlight-current-red">postDataApiInsertData</li>
+						<li class="fragment highlight-current-red">preDataApiUpdateData</li>
+						<li class="fragment highlight-current-red">postDataApiUpdateData</li>
+						<li class="fragment highlight-current-red">preDataApiDeleteData</li>
+						<li class="fragment highlight-current-red">postDataApiDeleteData</li>
+					</ul>
 				</section>
 
 
@@ -639,7 +652,7 @@ entity.dogs.field.location.description=ID and label of the location
 
 
 				<section>
-					<h2>Change queues</h2>
+					<h2>Data change queues</h2>
 				</section>
 
 				<section>
@@ -648,7 +661,7 @@ entity.dogs.field.location.description=ID and label of the location
 					<aside class="notes">
 						<ul>
 							<li>By default, turned off for users</li>
-							<li>Enable change queue per object, per operation</li>
+							<li>Enable data change queue per object, per operation</li>
 							<li>Here, just enable all operations, all objects</li>
 						</ul>
 					</aside>
@@ -728,7 +741,7 @@ settings.rest.apis[ "/data/v1" ].dataApiQueues = {
 
 				<section>
 					<h3>No authentication</h3>
-					<p class="fragment" style="color:#c00;border:4px solid #c00;background:white;padding: .5em 0;margin-bottom:2em;"><strong>WARNING!</strong><br>Only use for a <u>read-only API</u></p>
+					<p class="fragment" style="color:#c00;border:4px solid #c00;background:white;padding: .5em 0;margin-bottom:2em;"><strong class="blink">WARNING!</strong><br>Only use for a <u>read-only API</u></p>
 
 					<div class="fragment">
 						<em>/config/Config.cfc</em>
@@ -760,18 +773,18 @@ settings.rest.apis[ "/data/v1" ].authProvider = "";
 
 				<section>
 					<h2>Further reading</h2>
-					<ul>
+					<ul style="list-style:none;margin:0;">
 						<li class="fragment">
-							Preside Data API extension docs<br>
+							<span class="orange">Preside Data API extension docs</span><br>
 							<u>https://github.com/pixl8/preside-ext-data-api</u>
 						</li>
 						<li class="fragment space-above">
-							<em>REST Assured: A Pragmatic Approach To API Design</em><br>
-							Adam Tuttle (author of Taffy)<br>
+							<em class="orange">REST Assured: A Pragmatic Approach To API Design</em><br>
+							Adam Tuttle<br>
 							<u>https://restassuredbook.com/</u>
 						</li>
 						<li class="fragment space-above">
-							<em>Build APIs You Won't Hate</em><br>
+							<em class="orange">Build APIs You Won’t Hate</em><br>
 							Phil Sturgeon<br>
 							<u>https://apisyouwonthate.com/</u>
 						</li>
@@ -780,12 +793,14 @@ settings.rest.apis[ "/data/v1" ].authProvider = "";
 
 				<section>
 					<h2>Contact me</h2>
-					<ul>
+					<ul style="list-style:none;margin:0;">
 						<li class="fragment">
-							Twitter: <u>@sebduggan</u>
+							<span class="orange">Twitter</span><br>
+							<u>@sebduggan</u>
 						</li>
 						<li class="fragment space-above">
-							Slack: <u>https://www.preside.org/slack</u>
+							<span class="orange">Slack</span><br>
+							<u>https://www.preside.org/slack</u>
 						</li>
 					</ul>
 				</section>
@@ -798,10 +813,10 @@ settings.rest.apis[ "/data/v1" ].authProvider = "";
 		<script>
 			Reveal.initialize({
 				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
+					{ src: "plugin/markdown/marked.js" },
+					{ src: "plugin/markdown/markdown.js" },
+					{ src: "plugin/notes/notes.js", async: true },
+					{ src: "plugin/highlight/highlight.js", async: true }
 				],
 				hash: true,
 				controls: false,
