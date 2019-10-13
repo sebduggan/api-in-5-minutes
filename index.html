@@ -23,6 +23,9 @@
 		</script>
 
 		<style>
+			.orange {
+				color: #ff5f01;
+			}
 			.reveal section img {
 				border: 0;
 			}
@@ -42,6 +45,15 @@
 				</section>
 
 				<section></section>
+
+				<section>
+					TODO: Brief introduction to APIs and their use on modern websites/apps
+				</section>
+
+				<section>
+					<p><img data-src="img/netscape-now.jpg" class="fragment" width="300"></p>
+					<p><img data-src="img/free-ms-ie.gif" class="fragment" width="300"></p>
+				</section>
 
 				<section>
 					<h2>Quick Start</h2>
@@ -65,7 +77,7 @@
 
 component {
   property name="name" type="string" dbtype="varchar";
-  property ...
+  // more properties...
 }</code></pre>
 				</section>
 				<section>
@@ -78,7 +90,7 @@ component {
 
 component {
   property name="name" type="string" dbtype="varchar";
-  property ...
+  // more properties...
 }</code></pre>
 				</section>
 
@@ -195,7 +207,7 @@ component {
 
 
 				<section>
-					<h2>Simple customisation</h2>
+					<h2>Customising objects</h2>
 				</section>
 
 				<section>
@@ -262,7 +274,7 @@ component {}</code></pre>
 
 component {
   property name="name" type="string" dbtype="varchar";
-  property ...
+  // more properties...
 }</code></pre>
 				</section>
 				<section>
@@ -276,7 +288,7 @@ component {
 
 component {
   property name="name" type="string" dbtype="varchar";
-  property ...
+  // more properties...
 }</code></pre>
 				</section>
 				<section>
@@ -290,7 +302,7 @@ component {
 
 component extends="app.base.api_entity" {
   property name="name" type="string" dbtype="varchar";
-  property ...
+  // more properties...
 }</code></pre>
 				</section>
 				<section>
@@ -304,7 +316,7 @@ component extends="app.base.api_entity" {
 
 component extends="app.base.api_entity" {
   property name="name" type="string" dbtype="varchar";
-  property ...
+  // more properties...
 }</code></pre>
 				</section>
 				<section>
@@ -318,7 +330,7 @@ component extends="app.base.api_entity" {
 
 component extends="app.base.api_entity" {
   property name="name" type="string" dbtype="varchar";
-  property ...
+  // more properties...
 }</code></pre>
 				</section>
 
@@ -351,6 +363,157 @@ component extends="app.base.api_entity" {}</code></pre>
 					<video data-src="video/docs-customised.mov">
 				</section>
 
+				<section>
+					<h2>Object annotations</h2>
+					<ul style="columns:2;list-style:none;margin:0;column-gap:0;">
+						<li class="fragment highlight-current-red">dataApiEntityName</li>
+						<li class="fragment highlight-current-red">dataApiCategory</li>
+						<li class="fragment highlight-current-red">dataApiQueueEnabled</li>
+						<li class="fragment highlight-current-red">dataApiQueue</li>
+						<li class="fragment highlight-current-red">dataApiSortOrder</li>
+						<li class="fragment highlight-current-red">dataApiSavedFilters</li>
+						<li class="fragment highlight-current-red">dataApiVerbs</li>
+						<li class="fragment highlight-current-red">dataApiFields</li>
+						<li class="fragment highlight-current-red">dataApiUpsertFields</li>
+						<li class="fragment highlight-current-red">dataApiExcludeFields</li>
+						<li class="fragment highlight-current-red">dataApiUpsertExcludeFields</li>
+						<li class="fragment highlight-current-red">dataApiFilterFields</li>
+						<li class="fragment highlight-current-red">dataApiAllowIdInsert</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h2>Customising properties</h2>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+component {
+  property name="name" type="string" dbtype="varchar";
+  property name="main_photo"
+      relationship="many-to-one" relatedTo="asset";
+  property name="status"
+      relationship="many-to-one" relatedTo="homing_status";
+  property name="location"
+      relationship="many-to-one" relatedTo="location";
+  // more properties...
+}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="5">
+component {
+  property name="name" type="string" dbtype="varchar";
+  property name="main_photo"
+      relationship="many-to-one" relatedTo="asset"
+      dataApiAlias="photoUrl";
+  property name="status"
+      relationship="many-to-one" relatedTo="homing_status";
+  property name="location"
+      relationship="many-to-one" relatedTo="location";
+  // more properties...
+}
+&nbsp;
+&nbsp;
+&nbsp;</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="6">
+component {
+  property name="name" type="string" dbtype="varchar";
+  property name="main_photo"
+      relationship="many-to-one" relatedTo="asset"
+      dataApiAlias="photoUrl"
+      dataApiDerivative="dogListingPhoto";
+  property name="status"
+      relationship="many-to-one" relatedTo="homing_status";
+  property name="location"
+      relationship="many-to-one" relatedTo="location";
+  // more properties...
+}
+&nbsp;
+&nbsp;</code></pre>
+				</section>
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="9,12">
+component {
+  property name="name" type="string" dbtype="varchar";
+  property name="main_photo"
+      relationship="many-to-one" relatedTo="asset"
+      dataApiAlias="photoUrl"
+      dataApiDerivative="dogListingPhoto";
+  property name="status"
+      relationship="many-to-one" relatedTo="homing_status"
+      dataApiRenderer="dataApiHomingStatus";
+  property name="location"
+      relationship="many-to-one" relatedTo="location"
+      dataApiRenderer="dataApiLocation";
+  // more properties...
+}</code></pre>
+				</section>
+
+				<section>
+					<em>/handlers/renderers/content/dataApiHomingStatus.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+component {
+
+  private string function default( event, rc, prc, args={} ){
+    var statusId = args.data ?: "";
+
+    return renderLabel( "homing_status", statusId );
+  }
+}
+&nbsp;
+&nbsp;
+&nbsp;</code></pre>
+				</section>
+
+				<section>
+					<em>/handlers/renderers/content/dataApiLocation.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+component {
+
+  private struct function default( event, rc, prc, args={} ){
+    var locationId = args.data ?: "";
+
+    return {
+        id    = locationId
+      , label = renderLabel( "location", locationId )
+    };
+  }
+}</code></pre>
+				</section>
+
+				<section>
+					<video data-src="video/properties-before.mov">
+				</section>
+
+				<section>
+					<video data-src="video/properties-after.mov">
+				</section>
+
+
+				<section>
+					<h2>Property annotations</h2>
+					<ul style="list-style:none;margin:0;">
+						<li class="fragment highlight-current-red">dataApiAlias</li>
+						<li class="fragment highlight-current-red">dataApiRenderer</li>
+						<li class="fragment highlight-current-red">dataApiDerivative</li>
+						<li class="fragment highlight-current-red">dataApiType</li>
+						<li class="fragment highlight-current-red">dataApiFormat</li>
+						<li class="fragment highlight-current-red">dataApiEnabled</li>
+						<li class="fragment highlight-current-red">dataApiUpsertEnabled</li>
+					</ul>
+				</section>
+
 
 				<section>
 					<h2>Customising the Docs</h2>
@@ -369,6 +532,50 @@ api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AA
 				<section>
 					<img data-src="img/docs-i18n.png">
 				</section>
+
+
+				<section>
+					<h2>Interceptors</h2>
+				</section>
+
+				<section>
+					TODO: Interceptors
+				</section>
+
+
+				<section>
+					<h2>Change queues</h2>
+				</section>
+
+				<section>
+					By default, turned off for users
+
+					Enable change queue per object, per operation
+
+					Page size = default 1
+					Atomic - yes or no.
+				</section>
+
+
+				<section>
+					<h2>Authentication</h2>
+				</section>
+
+				<section>
+					- None?
+					- OAuth?
+					- Programmatical generation of tokens and self-serve
+				</section>
+
+
+				<section>
+					<h2>Multiple APIs</h2>
+				</section>
+
+				<section>
+					TODO: Multiple APIs
+				</section>
+
 
 
 				<section>
@@ -419,6 +626,7 @@ api.favicon=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPoAAAD6CAYAAACI7Fo9AA
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true }
 				],
+				hash: true,
 				controls: false,
 				autoPlayMedia: true,
 				progress: true,
