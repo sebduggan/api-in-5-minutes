@@ -54,7 +54,8 @@
 			<div class="slides">
 
 				<section data-background-image="img/puffin.jpg" data-transition="fade-out">
-					<h2 style="text-transform: none; color:#002b36;">A REST API in 5 minutes with Preside</h2>
+					<h2 style="text-transform: none; color:#3d5064;margin:270px 0 170px;">A REST API in 5 minutes with Preside</h2>
+					<img data-src="img/preside-logo.png" style="box-shadow:none;height:100px;margin:0;background:none;">
 				</section>
 
 
@@ -92,7 +93,7 @@
 				</section>
 
 				<section>
-					Preside
+					<img data-src="img/preside-logo.png" style="box-shadow:none;height:350px;margin:0;background:none;">
 
 					<aside class="notes">
 						<ul>
@@ -106,7 +107,6 @@
 				</section>
 
 				<section>
-					<p>preside-ext-data-api</p>
 					<img data-src="img/data-api-extension.png">
 				</section>
 
@@ -119,11 +119,52 @@
 				</section>
 
 				<section>
-					TODO: Brief overview of the demo site
+					<img data-src="img/homepage.jpg" style="width:45%;">
+				</section>
+				<section>
+					<img data-src="img/site-admin-1.png">
+				</section>
+				<section>
+					<img data-src="img/site-admin-2.png">
+				</section>
+				<section>
+					<img data-src="img/site-admin-3.png">
+				</section>
+				<section>
+					<img data-src="img/site-admin-4.png">
+				</section>
+				<section>
+					<img data-src="img/site-admin-5.png">
+				</section>
+				<section>
+					<img data-src="img/site-admin-6.png">
+				</section>
+				<section>
+					<img data-src="img/site-admin-7.png">
+				</section>
+				<section>
+					<img data-src="img/site-admin-8.png">
+				</section>
+
+
+<!-- ############################################################################################ -->
+
+
+				<section>
+					<h2>Start the clock...</h2>
+				</section>
+
+				<section>
+					<h3>1.<br>Install the extension</h3>
+					<p><code>box install preside-ext-data-api</code></p>
 				</section>
 
 				<section>
 					<video data-src="video/install.mov" />
+				</section>
+
+				<section>
+					<h3>2.<br>Configure a data object</h3>
 				</section>
 
 				<section>
@@ -158,10 +199,25 @@ component {
 				</section>
 
 				<section>
+					<h3>3.<br>Create an API user</h3>
+				</section>
+
+				<section>
 					<video data-src="video/user-config-1.mov" />
 				</section>
 				<section>
 					<video data-src="video/user-config-2.mov" />
+				</section>
+
+				<section>
+					<h2>...and we’re done!</h2>
+
+					<aside class="notes">
+						<ul>
+							<li>Under a minute and a half</li>
+							<li>Only one object set up so far, but let's look at what we've got...</li>
+						</ul>
+					</aside>
 				</section>
 
 
@@ -725,18 +781,20 @@ settings.rest.apis[ "/data/v1" ].dataApiQueues = {
 
 				<section>
 					<h3>Basic authentication</h3>
-					<ul>
-						<li class="fragment">Users manually created in admin</li>
-						<li class="fragment space-above">Access token generated</li>
-						<li class="fragment space-above">Potential for self-service for website users
-							<ul>
-								<li class="fragment">Programmatic creation of API user</li>
-								<li class="fragment">Business logic defines permissions</li>
-								<li class="fragment">Show the user their access token</li>
-								<li class="fragment">Allow them to reset their token</li>
-							</ul>
-						</li>
-					</ul>
+
+					<p class="fragment">Users manually created in admin</p>
+					<p class="fragment">Access token passed in as username</p>
+					<p class="fragment">Potential for self-service by website users</p>
+					<p class="fragment">Please use HTTPS!</p>
+
+					<aside class="notes">
+						<ul>
+							<li>Programmatic creation of API user</li>
+							<li>Business logic defines permissions</li>
+							<li>Show the user their access token</li>
+							<li>Allow them to reset their token</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
@@ -745,13 +803,15 @@ settings.rest.apis[ "/data/v1" ].dataApiQueues = {
 
 					<div class="fragment">
 						<em>/config/Config.cfc</em>
-						<pre><code class="java" data-trim data-noescape>
+						<pre><code class="java" data-trim data-noescape style="text-align: center;">
 settings.rest.apis[ "/data/v1" ].authProvider = "";
 						</code></pre>
 					</div>
 
 					<aside class="notes">
-						Could use for a firewall-protected or internal application, but even so should probably use Basic auth!
+						<p>Could use for a firewall-protected or internal application, but even so should probably use Basic auth!</p>
+
+						<p>Apologies for gratuitous bliniking text</p>
 					</aside>
 				</section>
 
