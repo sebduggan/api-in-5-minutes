@@ -70,7 +70,7 @@
 					<aside class="notes">
 						<ul>
 							<li>Early days of the web: sites were isolated</li>
-							<li>Little server-side processing</li>
+							<li>Little server-side processing - CGI scripts</li>
 							<li>Browsers not able to access data client-side</li>
 						</ul>
 						<ul>
@@ -86,7 +86,7 @@
 						<ul>
 							<li>Now nearly every site consumes data from the outside</li>
 							<li>Consumer: Twitter, etc</li>
-							<li>Mobile apps need a simple way to coomunicate data</li>
+							<li>Mobile apps need a simple way to transfer data</li>
 							<li>Enterprise: link to external SaaS services, sync CRM data, raise invoices</li>
 						</ul>
 					</aside>
@@ -290,7 +290,7 @@ component {
 
 
 				<section>
-					<h2>A pragmatic approach to REST</h2>
+					<h2>Preside’s approach to REST</h2>
 				</section>
 
 				<section>
@@ -644,20 +644,13 @@ component {
 
 
 				<section>
-					<h2>Interceptors</h2>
-				</section>
-
-				<section>
+					<h3>Interceptors</h3>
 					<ul style="list-style:none;margin:0;">
 						<li class="fragment highlight-current-red">onOpenApiSpecGeneration</li>
-						<li class="fragment highlight-current-red">preDataApiSelectData</li>
-						<li class="fragment highlight-current-red">postDataApiSelectData</li>
-						<li class="fragment highlight-current-red">preDataApiInsertData</li>
-						<li class="fragment highlight-current-red">postDataApiInsertData</li>
-						<li class="fragment highlight-current-red">preDataApiUpdateData</li>
-						<li class="fragment highlight-current-red">postDataApiUpdateData</li>
-						<li class="fragment highlight-current-red">preDataApiDeleteData</li>
-						<li class="fragment highlight-current-red">postDataApiDeleteData</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiSelectData</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiInsertData</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiUpdateData</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiDeleteData</li>
 					</ul>
 				</section>
 
@@ -1054,9 +1047,12 @@ component {
 
 				<section>
 					<h2>Further reading</h2>
+				</section>
+
+				<section>
 					<ul style="list-style:none;margin:0;">
-						<li class="fragment">
-							<span class="orange">Preside Data API extension docs</span><br>
+						<li>
+							<span class="orange">Preside Data API docs</span><br>
 							<u>https://github.com/pixl8/preside-ext-data-api</u>
 						</li>
 						<li class="fragment space-above">
@@ -1073,13 +1069,16 @@ component {
 				</section>
 
 				<section>
-					<h2>Contact me</h2>
+					<h2>Get in touch</h2>
+				</section>
+
+				<section>
 					<ul style="list-style:none;margin:0;text-align:center;">
-						<li class="fragment">
+						<li>
 							<span class="orange">Twitter</span><br>
 							<u>@sebduggan</u>
 						</li>
-						<li class="fragment space-above">
+						<li class="space-above">
 							<span class="orange">Slack</span><br>
 							<u>https://www.preside.org/slack</u>
 						</li>
@@ -1094,8 +1093,6 @@ component {
 		<script>
 			Reveal.initialize({
 				dependencies: [
-					{ src: "plugin/markdown/marked.js" },
-					{ src: "plugin/markdown/markdown.js" },
 					{ src: "plugin/notes/notes.js", async: true },
 					{ src: "plugin/highlight/highlight.js", async: true }
 				],
