@@ -84,7 +84,7 @@
 				<section>
 					<aside class="notes">
 						<ul>
-							<li>Now nearly every site consumes data from the outisde</li>
+							<li>Now nearly every site consumes data from the outside</li>
 							<li>Consumer: Twitter, etc</li>
 							<li>Mobile apps need a simple way to coomunicate data</li>
 							<li>Enterprise: link to external SaaS services, sync CRM data, raise invoices</li>
@@ -824,12 +824,233 @@ settings.rest.apis[ "/data/v1" ].authProvider = "";
 				</section>
 
 				<section>
-					TODO: Multiple APIs
+					<h3>Surely one API is enough?</h3>
+					<p class="fragment">Public/private API</p>
+					<p class="fragment">API versioning</p>
+					<p class="fragment">Extension-specific API</p>
+					<p class="fragment">Other separation of logic</p>
+				</section>
+
+				<section>
+					<em>/config/Config.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+settings.rest.apis[ "/public/v1" ] = {
+    authProvider        = ""
+  , description         = "Public REST API"
+  , dataApiNamespace    = "public"
+  , dataApiQueueEnabled = false
+};
+settings.rest.apis[ "/public/v1/docs" ] = {
+    description      = "Documentation for Public REST API"
+  , dataApiNamespace = "public"
+  , dataApiDocs      = true
+};
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+/**
+ * @labelField                  name
+ * @dataApiEnabled              true
+ */
+
+
+
+
+
+component {
+
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="4">
+/**
+ * @labelField                  name
+ * @dataApiEnabled              true
+ * @dataApiEnabled:public       true
+ */
+
+
+
+
+component {
+
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="5">
+/**
+ * @labelField                  name
+ * @dataApiEnabled              true
+ * @dataApiEnabled:public       true
+ * @dataApiVerbs:public         GET
+ */
+
+
+
+component {
+
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="6">
+/**
+ * @labelField                  name
+ * @dataApiEnabled              true
+ * @dataApiEnabled:public       true
+ * @dataApiVerbs:public         GET
+ * @dataApiFields:public        id,name,main_photo,status,location,breed,cross_breed,cross_with,gender,neutered,age,story
+ */
+
+
+component {
+
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="7">
+/**
+ * @labelField                  name
+ * @dataApiEnabled              true
+ * @dataApiEnabled:public       true
+ * @dataApiVerbs:public         GET
+ * @dataApiFields:public        id,name,main_photo,status,location,breed,cross_breed,cross_with,gender,neutered,age,story
+ * @dataApiFilterFields:public  name,status,breed,gender
+ */
+
+component {
+
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers>
+component {
+  property name="main_photo";
+  property name="status";
+  property name="location";
+  // more properties...
+}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="3-4">
+component {
+  property name="main_photo"
+      dataApiAlias:public="photo"
+      dataApiDerivative:public="dogListingPhoto";
+  property name="status";
+  property name="location";
+  // more properties...
+}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="6-8">
+component {
+  property name="main_photo"
+      dataApiAlias:public="photo"
+      dataApiDerivative:public="dogListingPhoto";
+  property name="status"
+      dataApiRenderer:public="dataApiHomingStatus"
+      dataApiType:public="string"
+      dataApiFormat:public="";
+  property name="location";
+  // more properties...
+}
+&nbsp;
+&nbsp;
+&nbsp;
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/preside-objects/dog.cfc</em>
+					<pre><code class="java" data-trim data-noescape data-line-numbers="10-12">
+component {
+  property name="main_photo"
+      dataApiAlias:public="photo"
+      dataApiDerivative:public="dogListingPhoto";
+  property name="status"
+      dataApiRenderer:public="dataApiHomingStatus"
+      dataApiType:public="string"
+      dataApiFormat:public="";
+  property name="location"
+      dataApiRenderer:public="dataApiLocation"
+      dataApiType:public="string"
+      dataApiFormat:public="";
+  // more properties...
+}
+					</code></pre>
+				</section>
+
+				<section>
+					<em>/api/data/v1/docs/html/</em>
+					<img data-src="img/multi-api-data.png">
+				</section>
+
+				<section>
+					<em>/api/public/v1/docs/html/</em>
+					<img data-src="img/multi-api-public-1.png">
+				</section>
+
+				<section>
+					<em>/api/public/v1/docs/html/</em>
+					<img data-src="img/multi-api-public-2.png">
+				</section>
+
+				<section>
+					<em>/api/public/v1/docs/html/</em>
+					<img data-src="img/multi-api-public-3.png">
+				</section>
+
+				<section>
+					<video data-src="video/multi-api-get.mov">
+				</section>
+
+				<section>
+					<video data-src="video/multi-api-put.mov">
 				</section>
 
 
 <!-- ############################################################################################ -->
 
+
+				<section></section>
 
 				<section>
 					<h2>Further reading</h2>
@@ -853,7 +1074,7 @@ settings.rest.apis[ "/data/v1" ].authProvider = "";
 
 				<section>
 					<h2>Contact me</h2>
-					<ul style="list-style:none;margin:0;">
+					<ul style="list-style:none;margin:0;text-align:center;">
 						<li class="fragment">
 							<span class="orange">Twitter</span><br>
 							<u>@sebduggan</u>
