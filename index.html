@@ -68,40 +68,70 @@
 					<p><img data-src="img/free-ms-ie.gif" class="fragment" width="300"></p>
 
 					<aside class="notes">
-						<ul>
-							<li>Early days of the web: sites were isolated</li>
-							<li>Little server-side processing - CGI scripts</li>
-							<li>Browsers not able to access data client-side</li>
-						</ul>
-						<ul>
-							<li>Pull/push data via FTP</li>
-							<li>SOAP - How many used? How many still using?</li>
-							<li>Thankfully, REST came along - simpler, especially when coupled with JSON</li>
-						</ul>
+						<p>
+							Back in the early days of the web - when I built my first site, 25 years ago - sites were mostly isolated and self-contained.
+						</p>
+
+						<p>
+							Servers didn't talk to each other, and the browsers of the day - REVEAL - certainly did not have the capability of accessing data on the client side.
+						</p>
 					</aside>
 				</section>
 
 				<section>
+					<p style="margin:0;">Stand-alone websites</p>
+					<div class="fragment">
+						<p style="margin:0 0 .3em;font-size:2em;line-height: 1;">&Downarrow;</p>
+						<p style="margin:0;">Data feeds over FTP</p>
+					</div>
+					<div class="fragment">
+						<p style="margin:0 0 .3em;font-size:2em;line-height: 1;">&Downarrow;</p>
+						<p style="margin:0;">WSDL, SOAP XML etc.</p>
+					</div>
+					<div class="fragment">
+						<p style="margin:0 0 .3em;font-size:2em;line-height: 1;">&Downarrow;</p>
+						<p style="margin:0;">REST APIs</p>
+					</div>
+
+					<aside class="notes">
+						<p>
+							Over the years, things have improved, and today it is a basic assumption that a website will communicate data with one or more other sites, either via the server or on the client.
+						</p>
+
+						<p>
+							And the driving force behind that is REST, which is now widely used both for server-to-server data communications, and for the client-server interactions required both by modern websites and mobile apps.
+						</p>
+					</aside>
+				</section>
+
+				<section>
+					<p>SaaS applications</p>
+					<p class="fragment">Web apps</p>
+					<p class="fragment">Embedded widgets</p>
+					<p class="fragment">Mobile apps</p>
+
 					<aside class="notes">
 						<ul>
-							<li>Now nearly every site consumes data from the outside</li>
-							<li>Consumer: Twitter, etc</li>
+							<li>SaaS: CRM sync, raising invoices, etc</li>
+							<li>Web apps: </li>
+							<li>Widgets: Twitter etc</li>
 							<li>Mobile apps need a simple way to transfer data</li>
-							<li>Enterprise: link to external SaaS services, sync CRM data, raise invoices</li>
 						</ul>
 					</aside>
 				</section>
 
-				<section>
+				<section></section>
+
+				<section data-transition="fade">
 					<img data-src="img/preside-logo.png" style="box-shadow:none;height:350px;margin:0;background:none;">
 
 					<aside class="notes">
 						<ul>
 							<li>Preside is very data-centric</li>
-							<li>Many clients require syncing of data from external systems</li>
-							<li>More and more, required to make data available from Preside</li>
-							<li>Preside has built-in REST capabilities, based on Taffy?</li>
-							<li>Made sense to make the process of setting up an API as easy as possible...</li>
+							<li>Many clients require syncing of data to/from external systems</li>
+							<li>More and more, we're required to make data available from Preside; e.g. exporting event attendees to conference apps, or exposing our CRM data to external systems</li>
+							<li>Preside has built-in REST capabilities, handling requests and routing</li>
+							<li>Made sense to leverage the existing data model to make the process of setting up an API as easy as possible...</li>
 						</ul>
 					</aside>
 				</section>
@@ -686,21 +716,6 @@ component {
 
 
 				<section>
-					<h3>Interceptors</h3>
-					<ul style="list-style:none;margin:0;">
-						<li class="fragment highlight-current-red">onOpenApiSpecGeneration</li>
-						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiSelectData</li>
-						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiInsertData</li>
-						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiUpdateData</li>
-						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiDeleteData</li>
-					</ul>
-				</section>
-
-
-<!-- ############################################################################################ -->
-
-
-				<section>
 					<h2>Customising the Docs</h2>
 				</section>
 
@@ -1080,6 +1095,59 @@ component {
 				<section>
 					<video data-src="video/multi-api-put.mov">
 				</section>
+
+
+<!-- ############################################################################################ -->
+
+
+				<section>
+					<h2>Further customisations</h2>
+				</section>
+
+				<section>
+					<p>Custom authenticator</p>
+					<p class="fragment">Custom endpoints</p>
+					<p class="fragment">Interceptors</p>
+
+					<aside class="notes">
+						<ul>
+							<li>OAuth</li>
+							<li>SSO</li>
+							<li>Preside uses Coldbox, and exposes intercewption points</li>
+						</ul>
+					</aside>
+				</section>
+				<section>
+					<h3>Interception points</h3>
+					<ul style="list-style:none;margin:0;">
+						<li class="fragment highlight-current-red">onOpenApiSpecGeneration</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiSelectData</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiInsertData</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiUpdateData</li>
+						<li class="fragment highlight-current-red"><span style="opacity:0.4;">[</span>pre<span style="opacity:0.4;">|</span>post<span style="opacity:0.4;">]</span>DataApiDeleteData</li>
+					</ul>
+				</section>
+
+
+
+
+<!-- ############################################################################################ -->
+
+
+				<section></section>
+
+				<section>
+					<h2>Recap</h2>
+				</section>
+				<section>
+					<p>Uses your existing data model</p>
+					<p class="fragment">Extensive configuration options</p>
+					<p class="fragment">Auto-generated docs</p>
+					<p class="fragment">Multiple APIs</p>
+					<p class="fragment">Data chage queues</p>
+					<p class="fragment">Powerful custom configuration</p>
+				</section>
+
 
 
 <!-- ############################################################################################ -->
