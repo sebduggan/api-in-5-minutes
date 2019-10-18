@@ -30,7 +30,10 @@
 				border: 0;
 			}
 			.space-above {
-				margin-top:1em;
+				margin-top:1em !important;
+			}
+			.space-above-more {
+				margin-top:2em !important;
 			}
 
 			.blink {
@@ -56,6 +59,33 @@
 				<section data-background-image="img/puffin.jpg" data-transition="fade-out">
 					<h2 style="text-transform: none; color:#3d5064;margin:270px 0 170px;">A REST API in 5 minutes with Preside</h2>
 					<img data-src="img/preside-logo.png" style="box-shadow:none;height:100px;margin:0;background:none;">
+
+
+					<aside class="notes">
+				</section>
+
+
+<!-- ############################################################################################ -->
+
+
+				<section>
+					<h3 class="fragment">About me</h3>
+					<p>
+						<span class="fragment">Published my first website in 1994<br></span>
+						<span class="fragment"><u>http://mail.bris.ac.uk/~cl3018</u><br></span>
+						<span class="fragment">(Yes, it was hosted on a mail server...)<br></span>
+					</p>
+					<p class="fragment space-above">
+						First used Allaire ColdFusion in 1999
+					</p>
+					<p class="space-above">
+						<span class="fragment">Lead developer at Pixl8<br></span>
+						<span class="fragment">One of the lead developers on Preside</span>
+					</p>
+				</section>
+
+				<section data-transition="fade">
+					<img data-src="img/seb-dogs.jpg" style="max-height:70vh;">
 				</section>
 
 
@@ -71,7 +101,6 @@
 						<p>
 							Back in the early days of the web - when I built my first site, 25 years ago - sites were mostly isolated and self-contained.
 						</p>
-
 						<p>
 							Servers didn't talk to each other, and the browsers of the day - REVEAL - certainly did not have the capability of accessing data on the client side.
 						</p>
@@ -95,7 +124,7 @@
 
 					<aside class="notes">
 						<p>
-							Over the years, things have improved, and today it is a basic assumption that a website will communicate data with one or more other sites, either via the server or on the client.
+							Over the years, things have improved, and it is a basic assumption now that a website will communicate data with one or more other sites, either via the server or on the client.
 						</p>
 
 						<p>
@@ -766,7 +795,7 @@ entity.dogs.field.location.description=ID and label of the location
 
 					<aside class="notes">
 						<ul>
-							<li>By default, turned off for users</li>
+							<li>By default, psermissions off for users</li>
 							<li>Enable data change queue per object, per operation</li>
 							<li>Here, just enable all operations, all objects</li>
 						</ul>
@@ -779,10 +808,25 @@ entity.dogs.field.location.description=ID and label of the location
 
 				<section>
 					<video data-src="video/queue-1.mov">
+
+					<aside class="notes">
+						<ul>
+							<li>Queue request gives the earliest change in your queue</li>
+							<li>Shows the new record data</li>
+							<li>Up to you what you want to do with this information</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
 					<video data-src="video/queue-2.mov">
+
+					<aside class="notes">
+						<ul>
+							<li>Once you've processed the queue record, send a DELETE command for that queue item</li>
+							<li>Next call to your queue will show you the next queued change</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
@@ -790,15 +834,19 @@ entity.dogs.field.location.description=ID and label of the location
 					<pre><code class="java" data-trim data-noescape data-line-numbers>
 settings.rest.apis[ "/data/v1" ].dataApiQueueEnabled = true;
 settings.rest.apis[ "/data/v1" ].dataApiQueues = {
-    default    = { pageSize=100 , atomicChanges=true  }
-  , highvolume = { pageSize=1000, atomicChanges=false }
+    default     = { pageSize=100, atomicChanges=true  }
+  , lowpriority = { pageSize=10 , atomicChanges=false }
 };
 					</code></pre>
 
 					<aside class="notes">
-						By default, queue page size is 1 record.
+						<ul>
+							<li>By default, queue page size is 1 record.</li>
+							<li>Atomic - each individual change is queued in order.</li>
+							<li>Multiple queues - critical data in default, checked constantly. Less important data in "lowpriority" queue - check less frequently</li>
+							<li>Use @dataQueueName annotation on preside object</li>
+						</ul>
 
-						Atomic - each individual change is queued in order.
 					</aside>
 				</section>
 
@@ -1144,8 +1192,8 @@ component {
 					<p class="fragment">Extensive configuration options</p>
 					<p class="fragment">Auto-generated docs</p>
 					<p class="fragment">Multiple APIs</p>
-					<p class="fragment">Data chage queues</p>
-					<p class="fragment">Powerful custom configuration</p>
+					<p class="fragment">Data change queues</p>
+					<p class="fragment">Powerful customisations</p>
 				</section>
 
 
@@ -1195,7 +1243,9 @@ component {
 					</ul>
 				</section>
 			</div>
+			<div id="twitter" style="color:white;position:absolute;bottom:3%;left:3%;opacity:50%;font-size:70%;">@sebduggan</div>
 		</div>
+
 
 
 
